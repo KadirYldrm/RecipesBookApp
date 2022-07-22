@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.row_food_name.view.*
 class FRFoodNameAdapter(
     private val foodList: ArrayList<String>,
     private val idList: ArrayList<Int>
+
 ) :
     RecyclerView.Adapter<FRFoodNameAdapter.FoodNameHolder>() {
 
