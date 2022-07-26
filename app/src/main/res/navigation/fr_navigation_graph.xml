@@ -9,7 +9,7 @@
         android:id="@+id/FRFoodName"
         android:name="com.example.recipesbook.fragment.FRFoodName"
         android:label="f_r_food_name"
-        tools:layout="@layout/f_r_food_name" >
+        tools:layout="@layout/fr_food_name" >
         <action
             android:id="@+id/action_FRFoodName_to_FRRecipes"
             app:destination="@id/FRRecipes" />
@@ -18,7 +18,7 @@
         android:id="@+id/FRRecipes"
         android:name="com.example.recipesbook.fragment.FRRecipes"
         android:label="f_r_recipes"
-        tools:layout="@layout/f_r_recipes" >
+        tools:layout="@layout/fr_recipes" >
         <action
             android:id="@+id/action_FRRecipes_to_FRFoodName"
             app:destination="@id/FRFoodName" />

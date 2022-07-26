@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.FRRecipes">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/dimen_20_dp"
+        android:onClick="ClickFood"
+        android:src="@drawable/bg_selected_image" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="true"
+        android:textColorHint="@color/red"
+        app:boxBackgroundColor="#ECEEF1"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/red">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etFoodName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/food_name"
+            android:inputType="text"
+            android:textColor="@color/red"
+            android:textColorHint="@color/red" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="true"
+        android:textColorHint="@color/red"
+        app:boxBackgroundColor="#ECEEF1"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/red">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etFoodMaterial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_20_dp"
+            android:hint="@string/food_materials"
+            android:inputType="text"
+            android:textColor="@color/red"
+            android:textColorHint="@color/red" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dimen_20_dp"
+        android:background="#BFC0C1"
+        android:onClick="save"
+        android:text="@string/button_save"
+        android:textColor="@color/red" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dimen_20_dp"
+        android:background="#BFC0C1"
+        android:onClick="delete"
+        android:text="@string/delete"
+        android:textColor="@color/red" />
+
+</LinearLayout>
