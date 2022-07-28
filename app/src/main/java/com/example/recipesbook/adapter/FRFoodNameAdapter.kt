@@ -1,5 +1,7 @@
 package com.example.recipesbook.adapter
 
+
+import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,11 +13,12 @@ import kotlinx.android.synthetic.main.row_food_name.view.*
 
 class FRFoodNameAdapter(
     private val foodList: ArrayList<String>,
-    private val idList: ArrayList<Int>
+    private val idList: ArrayList<Int>,
+    private val imageList: ArrayList<Bitmap>,
+    private val foodRecipesList:ArrayList<String>
 
 ) :
     RecyclerView.Adapter<FRFoodNameAdapter.FoodNameHolder>() {
-
     class FoodNameHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     }
@@ -29,23 +32,28 @@ class FRFoodNameAdapter(
     }
 
     override fun onBindViewHolder(holder: FoodNameHolder, position: Int) {
+        holder.itemView.apply {
+            tvFoodName.text = foodList[position]
+            tvFoodRecipes.text = foodRecipesList[position]
+            ivFoodNameImage.setImageBitmap(imageList[position])
 
-        holder.itemView.tvFoodName.text = foodList[position]
-
-        holder.itemView.setOnClickListener {
-
-            val action =
-                FRFoodNameDirections.actionFRFoodNameToFRRecipes("fromtorecycler", idList[position])
-            Navigation.findNavController(it).navigate(action)
+            setOnClickListener {
+                val action =
+                    FRFoodNameDirections.actionFRFoodNameToFRRecipes(
+                        "fromToRecycler",
+                        idList[position]
+                    )
+                Navigation.findNavController(it).navigate(action)
+            }
 
         }
+
 
     }
 
     override fun getItemCount(): Int {
-
         return foodList.size
-
     }
+
 
 }

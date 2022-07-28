@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         if (item.itemId == R.id.miFoodAdding) {
 
-            val action = FRFoodNameDirections.actionFRFoodNameToFRRecipes("fromtomenu", 0)
+            val action = FRFoodNameDirections.actionFRFoodNameToFRRecipes("fromToMenu", 0)
             Navigation.findNavController(this, R.id.fcvMain).navigate(action)
 
         }
