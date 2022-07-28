@@ -20,7 +20,7 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.Navigation
 import com.example.recipesbook.R
 import kotlinx.android.synthetic.main.fr_recipes.*
-import kotlinx.android.synthetic.main.row_food_name.*
+import kotlinx.android.synthetic.main.fr_recipes.view.*
 import java.io.ByteArrayOutputStream
 import java.lang.Exception
 
@@ -52,7 +52,7 @@ class FRRecipes : Fragment() {
             ClickFood(it)
         }
 
-        btnDelete.setOnClickListener(this::delete)
+        //btnDelete.setOnClickListener(this::delete)
 
         arguments?.let {
 
@@ -95,6 +95,13 @@ class FRRecipes : Fragment() {
                             val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
                             ivSelect.setImageBitmap(bitmap)
 
+                        }
+
+                        btnDelete.setOnClickListener {
+                            context?.let {
+                                val database = it.openOrCreateDatabase("Foods", Context.MODE_PRIVATE, null)
+                                database.delete("Foods","id=?", arrayOf(selectedId.toString()))
+                            }
                         }
 
                         cursor.close()
@@ -256,7 +263,7 @@ class FRRecipes : Fragment() {
     }
 
 
-    private fun delete(view: View){
+   /* private fun delete(view: View){
 
         //val foodName = tvFoodName.text.toString()
         //val foodMaterials = etFoodMaterial.text.toString()
@@ -280,6 +287,6 @@ class FRRecipes : Fragment() {
         }
 
 
-    }
+    }*/
 
 }

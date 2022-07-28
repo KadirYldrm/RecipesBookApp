@@ -12,7 +12,7 @@
         android:layout_marginRight="@dimen/dimen_20_dp"
         android:layout_marginTop="@dimen/dimen_20_dp"
         android:layout_gravity="center"
-        android:layout_height="wrap_content">
+        android:layout_height="200dp">
 
     </androidx.appcompat.widget.AppCompatImageView>
 

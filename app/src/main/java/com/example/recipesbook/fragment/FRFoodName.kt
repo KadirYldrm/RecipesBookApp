@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recipesbook.R
 import com.example.recipesbook.adapter.FRFoodNameAdapter
 import kotlinx.android.synthetic.main.fr_food_name.*
-import kotlinx.android.synthetic.main.row_food_name.*
 
 class FRFoodName : Fragment() {
 
@@ -47,6 +46,8 @@ class FRFoodName : Fragment() {
         rvFoodName.adapter = listAdapter
 
         sqlDataAccess()
+
+
 
     }
 

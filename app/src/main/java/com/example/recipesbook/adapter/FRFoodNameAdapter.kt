@@ -1,5 +1,6 @@
 package com.example.recipesbook.adapter
 
+
 import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.View
@@ -45,7 +46,6 @@ class FRFoodNameAdapter(
                 Navigation.findNavController(it).navigate(action)
             }
 
-
         }
 
 
@@ -54,5 +54,6 @@ class FRFoodNameAdapter(
     override fun getItemCount(): Int {
         return foodList.size
     }
+
 
 }
