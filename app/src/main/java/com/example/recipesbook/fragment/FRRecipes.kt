@@ -35,8 +35,8 @@ class FRRecipes : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fr_recipes, container, false)
     }
@@ -52,8 +52,6 @@ class FRRecipes : Fragment() {
             ClickFood(it)
         }
 
-        //btnDelete.setOnClickListener(this::delete)
-
         arguments?.let {
 
             val incomingInfo = FRRecipesArgs.fromBundle(it).info
@@ -65,7 +63,7 @@ class FRRecipes : Fragment() {
                 btnSave.visibility = View.VISIBLE
                 btnDelete.visibility = View.INVISIBLE
                 val imageSelect =
-                    BitmapFactory.decodeResource(context?.resources, R.drawable.bg_selected_image)
+                        BitmapFactory.decodeResource(context?.resources, R.drawable.bg_selected_image)
                 ivSelect.setImageBitmap(imageSelect)
 
             } else {
@@ -78,8 +76,8 @@ class FRRecipes : Fragment() {
                     try {
                         val db = context.openOrCreateDatabase("Foods", Context.MODE_PRIVATE, null)
                         val cursor = db.rawQuery(
-                            "SELECT * FROM foods WHERE id = ?",
-                            arrayOf(selectedId.toString())
+                                "SELECT * FROM foods WHERE id = ?",
+                                arrayOf(selectedId.toString())
                         )
 
                         val foodNameIndex = cursor.getColumnIndex("foodName")
@@ -100,7 +98,7 @@ class FRRecipes : Fragment() {
                         btnDelete.setOnClickListener {
                             context?.let {
                                 val database = it.openOrCreateDatabase("Foods", Context.MODE_PRIVATE, null)
-                                database.delete("Foods","id=?", arrayOf(selectedId.toString()))
+                                database.delete("Foods", "id=?", arrayOf(selectedId.toString()))
                             }
                         }
 
@@ -138,7 +136,7 @@ class FRRecipes : Fragment() {
                     database.execSQL("CREATE TABLE IF NOT EXISTS foods (id INTEGER PRIMARY KEY,foodName VARCHAR,foodMaterial VARCHAR, images BLOG)")
 
                     val sqlString =
-                        "INSERT INTO foods (foodName,foodMaterial,images) VALUES (?,?,?)"
+                            "INSERT INTO foods (foodName,foodMaterial,images) VALUES (?,?,?)"
                     val statement = database.compileStatement(sqlString)
                     statement.bindString(1, foodName)
                     statement.bindString(2, foodMaterials)
@@ -161,9 +159,9 @@ class FRRecipes : Fragment() {
 
 
     override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
+            requestCode: Int,
+            permissions: Array<out String>,
+            grantResults: IntArray
     ) {
 
         if (requestCode == 1) {
@@ -171,7 +169,7 @@ class FRRecipes : Fragment() {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
                 val galleryIntent =
-                    Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                        Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
 
                 startActivityForResult(galleryIntent, 2)
 
@@ -191,14 +189,14 @@ class FRRecipes : Fragment() {
                     if (selectedImage != null) {
                         if (Build.VERSION.SDK_INT >= 28) {
                             val source =
-                                ImageDecoder.createSource(it.contentResolver, selectedImage!!)
+                                    ImageDecoder.createSource(it.contentResolver, selectedImage!!)
                             selectedBitmap = ImageDecoder.decodeBitmap(source)
                             ivSelect.setImageBitmap(selectedBitmap)
 
                         } else {
 
                             selectedBitmap =
-                                MediaStore.Images.Media.getBitmap(it.contentResolver, selectedImage)
+                                    MediaStore.Images.Media.getBitmap(it.contentResolver, selectedImage)
                             ivSelect.setImageBitmap(selectedBitmap)
 
                         }
@@ -243,9 +241,9 @@ class FRRecipes : Fragment() {
         activity?.let {
 
             if (ContextCompat.checkSelfPermission(
-                    it.applicationContext,
-                    Manifest.permission.READ_EXTERNAL_STORAGE
-                ) != PackageManager.PERMISSION_GRANTED
+                            it.applicationContext,
+                            Manifest.permission.READ_EXTERNAL_STORAGE
+                    ) != PackageManager.PERMISSION_GRANTED
             ) {
 
                 requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), 1)
@@ -253,7 +251,7 @@ class FRRecipes : Fragment() {
             } else {
 
                 val galleryIntent =
-                    Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                        Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
 
                 startActivityForResult(galleryIntent, 2)
 
@@ -263,30 +261,30 @@ class FRRecipes : Fragment() {
     }
 
 
-   /* private fun delete(view: View){
+    /* private fun delete(view: View){
 
-        //val foodName = tvFoodName.text.toString()
-        //val foodMaterials = etFoodMaterial.text.toString()
-        //val outputStream = ByteArrayOutputStream()
-        //val byteArray = outputStream.toByteArray()
+         //val foodName = tvFoodName.text.toString()
+         //val foodMaterials = etFoodMaterial.text.toString()
+         //val outputStream = ByteArrayOutputStream()
+         //val byteArray = outputStream.toByteArray()
 
-        context?.let {
+         context?.let {
 
-            val database = it.openOrCreateDatabase("Foods", Context.MODE_PRIVATE, null)
-            val sqlString = "DELETE FROM Foods WHERE id =?"
-            val statement = database.compileStatement(sqlString)
+             val database = it.openOrCreateDatabase("Foods", Context.MODE_PRIVATE, null)
+             val sqlString = "DELETE FROM Foods WHERE id =?"
+             val statement = database.compileStatement(sqlString)
 
-            statement.clearBindings()
-            //statement.bindString(1, foodName)
-            //statement.bindString(2, foodMaterials)
-            //statement.bindBlob(3, byteArray)
+             statement.clearBindings()
+             //statement.bindString(1, foodName)
+             //statement.bindString(2, foodMaterials)
+             //statement.bindBlob(3, byteArray)
 
-            statement.execute()
-            database.close()
+             statement.execute()
+             database.close()
 
-        }
+         }
 
 
-    }*/
+     }*/
 
 }
