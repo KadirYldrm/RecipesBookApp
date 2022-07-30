@@ -1,4 +1,4 @@
-# ReciplesBook
+# RecipesBook
 
 
 The recipe book allows people to find recipes easily and while doing this, it provides people with real images of the dishes. With the feature of recording the meals, you can access all the meals at any time without any problems.
